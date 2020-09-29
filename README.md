@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is the frontend for nytimes-lite app created by Tim Rinkerman and Tomas Gonzalez | Mod 4 - Flatiron School
+
 ## Available Scripts
 
 In the project directory, you can run:
