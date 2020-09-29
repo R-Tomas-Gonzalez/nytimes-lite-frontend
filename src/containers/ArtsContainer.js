@@ -7,8 +7,8 @@ class Arts extends Component {
     { 
         const articles = this.props.artArticles
         return ( 
-            <div>
-                {articles.map((article, index) => (<ArticleCard key={index} article={article}/>))}
+            <div className='artsContainer'>
+                {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
             </div>
         );
     }
