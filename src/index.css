@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ui-card {
+  top: 422px;
+  left: 141px;
+  width: 391px;
+  height: 454px;
+
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  opacity: 1;
+}
+
+.artsContainer {
+  top: 422px;
+  left: 141px;
+  width: 1639px;
+  height: 454px;
+  opacity: 1;
+}
