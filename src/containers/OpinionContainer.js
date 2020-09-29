@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ArticleCard from '../components/ArticleCard'
 
-class Arts extends Component {
+class Opinion extends Component {
     
     render()
+
     { 
-        const articles = this.props.artArticles
+        console.log(this.props.opinionArticles.multimedia)
+        const articles = this.props.opinionArticles
         return ( 
             <div className='card-row'>
                 {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
@@ -14,4 +16,4 @@ class Arts extends Component {
     }
 }
  
-export default Arts;
+export default Opinion;

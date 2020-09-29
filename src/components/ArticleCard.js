@@ -11,11 +11,13 @@ import React from 'react';
 const ArticleCard = (props) => {
 
     const {abstract, byline, title, url} = props.article
+    
     const imageUrl = props.article.multimedia[2].url
     console.log(props)
 
     return ( 
-        <div className="ui column">
+       
+        <div class="column">
             <div className="ui-card" key={null} onClick={null}>
                 <div className="image">
                     <img alt="nyt-image" src={imageUrl} />
@@ -26,14 +28,15 @@ const ArticleCard = (props) => {
                     </div>
                     <div className="byline">
                         <small>{byline}</small>
-                    </div>
+                    </div><br></br>
                     <div>
                         {abstract}
-                    </div>
+                    </div><br></br>
                     <a href={url}>Read more...</a>
                 </div>
             </div>
         </div>
+        
     //     <div className="ui column">
     //   <div
     //     className="ui card"
