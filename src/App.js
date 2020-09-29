@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import './App.css';
+import Arts from './containers/ArtsContainer'
 
 const key = process.env.REACT_APP_API_KEY
 
@@ -31,7 +32,7 @@ class App extends Component {
       .then(resp=>resp.json())
       ))
       .then(sections => {
-        // console.log(sections[4].results)
+        
         const arts_results = sections[0].results;
         const arts_section = 'arts';
         const tech_results = sections[1].results;
@@ -43,23 +44,29 @@ class App extends Component {
         const politics_results = sections[4].results;
         const politics_section = 'us';
 
-        this.grabArticleSection(arts_section, arts_results)
-        this.grabArticleSection(tech_section, tech_results)
-        this.grabArticleSection(sunday_section, sunday_results)
-        this.grabArticleSection(sports_section, sports_results)
-        this.grabArticleSection(politics_section, politics_results)
+        function grabArticleSection(section, results){
+          const newResults = results.filter(result => result.section === section)
+             return newResults
+        }
+      
+        this.setState({
+          arts: grabArticleSection(arts_section, arts_results), 
+          technology: grabArticleSection(tech_section, tech_results),
+          opinion: grabArticleSection(sunday_section, sunday_results),
+          sunday: grabArticleSection(sunday_section, sunday_results),
+          sports: grabArticleSection(sports_section, sports_results),
+          us: grabArticleSection(politics_section, politics_results)
+        })
+
       })
   }
 
-  grabArticleSection(section, results){
-    const newResults = results.filter(result => result.section === section)
-       this.setState({[section]: newResults})
-  }
-
-
-  render() { 
-    console.log(this.state.arts)
-    return ( null );
+  render() {
+    return (
+      <div>
+        <Arts artArticles={this.state.arts} />
+      </div>
+    );
   }
 }
  
