@@ -53,7 +53,6 @@ class App extends Component {
           arts: grabArticleSection(arts_section, arts_results), 
           technology: grabArticleSection(tech_section, tech_results),
           opinion: grabArticleSection(sunday_section, sunday_results),
-          sunday: grabArticleSection(sunday_section, sunday_results),
           sports: grabArticleSection(sports_section, sports_results),
           us: grabArticleSection(politics_section, politics_results)
         })
