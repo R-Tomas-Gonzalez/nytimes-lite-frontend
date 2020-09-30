@@ -4,6 +4,9 @@ import Opinion from '../containers/OpinionContainer'
 import Sports from '../containers/SportsContainer'
 import Tech from '../containers/TechContainer'
 import Politics from '../containers/PoliticsContainer'
+import Header from '../components/Header.js'
+
+
 const key = process.env.REACT_APP_API_KEY
 
 const urls = [
@@ -65,18 +68,22 @@ class MainPage extends Component{
 
     render(){
 return(
+    
     <div>
-    <h2>Arts</h2>
+      <div className="nyt-main-header">
+          <Header />
+        </div>
+   
     <Arts artArticles={this.state.arts} />
-    <h2>Opinion</h2>
+    
     <Opinion opinionArticles={this.state.opinion}/>
-    <h2>Sports</h2>
+    
     <Sports sportsArticles={this.state.sports}/>
-    <h2>Technology</h2>
+    
     <Tech techArticles={this.state.technology}/>
-    <h2>Politics</h2>
+   
     <Politics politicalArticles={this.state.us}/>
-    <button>Here</button>
+    
     </div>
 )
 }
