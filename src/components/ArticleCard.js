@@ -11,7 +11,7 @@ import React from 'react';
 const ArticleCard = (props) => {
 
     const {abstract, byline, title, url} = props.article
-    const imageUrl = props.article.multimedia[2].url
+    const imageUrl = props.multimedia
 
     // let handleClick = (article) => {
     //     console.log(article)
@@ -33,7 +33,7 @@ const ArticleCard = (props) => {
                     <div>
                         {abstract}
                     </div><br></br>
-                    <a href={url}>Read more...</a>
+                    <a className="read-more" href={url}>Read more...</a>
                 </div>
             </div>
         </div>

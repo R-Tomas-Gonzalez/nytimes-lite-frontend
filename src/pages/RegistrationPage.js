@@ -6,7 +6,7 @@ class RegistrationPage extends Component{
 
     handleSuccessfulAuth = (data) => {
         this.props.handleLogin(data);
-        this.props.history.push("/login");  
+        this.props.history.push("/userpage");  
     }
 
     render(){
@@ -22,7 +22,6 @@ class RegistrationPage extends Component{
                 </header>
 
                 <div className="form-container">
-                    Status: {this.props.loggedInStatus}
                     <RegistrationComponent handleSuccessfulAuth={this.handleSuccessfulAuth}/>
                 </div>
                 
