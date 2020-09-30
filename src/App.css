@@ -1,9 +1,8 @@
 
 /* Header content */
-
 .header-component{
   width: 1280px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .nytimes-text {
@@ -48,6 +47,43 @@ color: #FFFFFF;
 opacity: 1;
 margin: 10px;
 }
+
+/* Login and registration forms */
+
+.form-container {
+  margin-top: 125px;
+  text-align: center;
+}
+
+input[type=email] {
+  margin:5px;
+}
+
+input[type=password] {
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.auth-button {
+  align-items: center;
+  padding:7px;
+  
+  background: #587C94 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.auth-button-text {
+  font-family: FranklinGothic URW, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+  margin-top: 2px;
+  margin: 10px;
+}
+
 
 /* Row containers and headers */
 .card-container {

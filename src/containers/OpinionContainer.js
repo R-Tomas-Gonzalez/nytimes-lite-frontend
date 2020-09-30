@@ -6,7 +6,7 @@ class Opinion extends Component {
     render()
 
     { 
-        console.log(this.props.opinionArticles.multimedia)
+        
         const articles = this.props.opinionArticles
         return ( 
             <div className='card-container'>

@@ -11,9 +11,7 @@ import React from 'react';
 const ArticleCard = (props) => {
 
     const {abstract, byline, title, url} = props.article
-    
     const imageUrl = props.article.multimedia[2].url
-    console.log(props)
 
     return ( 
         <div className="column">
