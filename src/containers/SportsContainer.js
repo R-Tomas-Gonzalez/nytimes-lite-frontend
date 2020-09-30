@@ -7,8 +7,13 @@ class Sports extends Component {
     { 
         const articles = this.props.sportsArticles
         return ( 
-            <div className='card-row'>
-                {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+            <div className='card-container'>
+                <h2 className='section'>
+                    Sports
+                </h2>
+                <div className='card-row'>
+                    {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+                </div>
             </div>
         );
     }

@@ -16,8 +16,7 @@ const ArticleCard = (props) => {
     console.log(props)
 
     return ( 
-       
-        <div class="column">
+        <div className="column">
             <div className="ui-card" key={null} onClick={null}>
                 <div className="image">
                     <img alt="nyt-image" src={imageUrl} />

@@ -7,8 +7,13 @@ class Politics extends Component {
     { 
         const articles = this.props.politicalArticles
         return ( 
-            <div className='card-row'>
-                {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+            <div className='card-container'>
+                <h2 className='section'>
+                    Politics
+                </h2>
+                <div className='card-row'>
+                    {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+                </div>
             </div>
         );
     }

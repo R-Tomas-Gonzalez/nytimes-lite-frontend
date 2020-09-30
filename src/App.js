@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
 import './App.css';
+import Header from './components/Header'
+
 import Arts from './containers/ArtsContainer'
 import Opinion from './containers/OpinionContainer'
 import Sports from './containers/SportsContainer'
@@ -66,17 +68,19 @@ class App extends Component {
 
   render() {
     return (
+      
       <div>
-        <h2>Arts</h2>
-        <Arts artArticles={this.state.arts} />
-        <h2>Opinion</h2>
-        <Opinion opinionArticles={this.state.opinion}/>
-        <h2>Sports</h2>
-        <Sports sportsArticles={this.state.sports}/>
-        <h2>Technology</h2>
-        <Tech techArticles={this.state.technology}/>
-        <h2>Politics</h2>
-        <Politics politicalArticles={this.state.us}/>
+        <div className="nyt-main-header">
+          <Header />
+        </div>
+        <div className="sections">
+            <Arts artArticles={this.state.arts} />
+            <Opinion opinionArticles={this.state.opinion} />
+            <Sports sportsArticles={this.state.sports} />
+            <Tech techArticles={this.state.technology} />
+            <Politics politicalArticles={this.state.us} />
+        </div>
+        
       </div>
     );
   }
