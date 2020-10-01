@@ -5,6 +5,10 @@ import Sports from '../containers/SportsContainer'
 import Tech from '../containers/TechContainer'
 import Politics from '../containers/PoliticsContainer'
 import Header from '../components/Header.js'
+import UserFavs from '../containers/UserFavs.js'
+import { NavLink } from 'react-router-dom'
+
+
 
 const key = process.env.REACT_APP_API_KEY
 
@@ -15,13 +19,14 @@ const urls = [
 `https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=${key}`,
 `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${key}`,
 ]
-class MainPage extends Component{
+class UserPage extends Component{
    state = { 
           arts: [],
           technology: [],
           opinion: [],
           sports: [],
           us: [],
+          userArticles: []
         }
     
       
@@ -35,6 +40,7 @@ class MainPage extends Component{
             .then(resp=>resp.json())
             ))
             .then(sections => {
+             
               const arts_results = sections[0].results;
               const arts_section = 'arts';
               const tech_results = sections[1].results;
@@ -62,23 +68,41 @@ class MainPage extends Component{
             })
         }
       
-
+        addToFavs = (article) => {
+            this.setState({userArticles: [...this.state.userArticles,article]})
+        }
 
     render(){
 return(
     
     <div>
+        
       <div className="nyt-main-header">
-        <Header />
-      </div>
-      <Arts artArticles={this.state.arts} />
-      <Opinion opinionArticles={this.state.opinion}/>
-      <Sports sportsArticles={this.state.sports}/>
-      <Tech techArticles={this.state.technology}/>
-      <Politics politicalArticles={this.state.us}/> 
+      <header className="header-component">
+                <NavLink to="/" className='home-login' ><span className="login-text"><strong>Sign Out</strong></span></NavLink>
+                <div className="content">
+                <div className="nytimes-text">THE NEW YORK TIMES <span className="lite">lite</span></div>
+                </div>
+                <hr className="header-line"/>
+            </header>
+        </div>
+            <div className="side-bar">
+                <h2>User Favs</h2>
+                <UserFavs articles={this.state.userArticles}/>
+            </div>
+    <Arts artArticles={this.state.arts} addToFavs={this.addToFavs}/>
+    
+    <Opinion opinionArticles={this.state.opinion} addToFavs={this.addToFavs}/>
+    
+    <Sports sportsArticles={this.state.sports} addToFavs={this.addToFavs}/>
+    
+    <Tech techArticles={this.state.technology} addToFavs={this.addToFavs}/>
+   
+    <Politics politicalArticles={this.state.us} addToFavs={this.addToFavs}/>
+    
     </div>
 )
 }
 }
 
-export default MainPage
+export default UserPage

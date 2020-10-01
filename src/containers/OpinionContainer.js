@@ -14,7 +14,7 @@ class Opinion extends Component {
                     Sunday Review
                 </h2>
                 <div className='card-row'>
-                    {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+                    {articles.map((article, index) => (<ArticleCard article={article} key={index} handleClick={this.props.addToFavs}/>))}
                 </div>
             </div>
         );

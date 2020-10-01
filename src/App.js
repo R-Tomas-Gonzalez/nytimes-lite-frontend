@@ -11,6 +11,7 @@ import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import UserPage from './pages/UserPage'
 
 class App extends Component {
   
@@ -71,6 +72,7 @@ class App extends Component {
         <Route exact path="/registration" render={props => (<RegistrationPage {...props} 
         handleLogin={this.handleLogin} 
         loggedInStatus={this.state.loggedInStatus}/> )} />
+        <Route exact path="/userpage" component={UserPage}/>
         </Switch>
         </div>
       </Router>
