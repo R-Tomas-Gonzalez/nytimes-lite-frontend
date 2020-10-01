@@ -6,7 +6,7 @@ class Opinion extends Component {
     render()
 
     { 
-        console.log(this.props.opinionArticles.multimedia)
+       
         const articles = this.props.opinionArticles
         return ( 
             <div className='card-container'>
@@ -14,7 +14,7 @@ class Opinion extends Component {
                     Sunday Review
                 </h2>
                 <div className='card-row'>
-                    {articles.map((article, index) => (<ArticleCard article={article} key={index}/>))}
+                    {articles.map((article, index) => (<ArticleCard article={article} key={index} handleClick={this.props.addToFavs}/>))}
                 </div>
             </div>
         );
