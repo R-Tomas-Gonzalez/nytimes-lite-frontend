@@ -6,7 +6,7 @@ class Opinion extends Component {
     render()
 
     { 
-       
+        
         const articles = this.props.opinionArticles
         return ( 
             <div className='card-container'>
