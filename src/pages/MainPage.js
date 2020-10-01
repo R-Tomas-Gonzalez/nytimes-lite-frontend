@@ -6,7 +6,6 @@ import Tech from '../containers/TechContainer'
 import Politics from '../containers/PoliticsContainer'
 import Header from '../components/Header.js'
 
-
 const key = process.env.REACT_APP_API_KEY
 
 const urls = [
@@ -36,7 +35,6 @@ class MainPage extends Component{
             .then(resp=>resp.json())
             ))
             .then(sections => {
-              console.log(sections)
               const arts_results = sections[0].results;
               const arts_section = 'arts';
               const tech_results = sections[1].results;
@@ -71,19 +69,13 @@ return(
     
     <div>
       <div className="nyt-main-header">
-          <Header />
-        </div>
-   
-    <Arts artArticles={this.state.arts} />
-    
-    <Opinion opinionArticles={this.state.opinion}/>
-    
-    <Sports sportsArticles={this.state.sports}/>
-    
-    <Tech techArticles={this.state.technology}/>
-   
-    <Politics politicalArticles={this.state.us}/>
-    
+        <Header />
+      </div>
+      <Arts artArticles={this.state.arts} />
+      <Opinion opinionArticles={this.state.opinion}/>
+      <Sports sportsArticles={this.state.sports}/>
+      <Tech techArticles={this.state.technology}/>
+      <Politics politicalArticles={this.state.us}/> 
     </div>
 )
 }
