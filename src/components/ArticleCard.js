@@ -13,11 +13,15 @@ const ArticleCard = (props) => {
     const {abstract, byline, title, url} = props.article
     
     const imageUrl = props.article.multimedia[2].url
-    console.log(props)
+    
 
+    // let handleClick = (article) => {
+    //     console.log(article)
+    // }
+    
     return ( 
         <div className="column">
-            <div className="ui-card" key={null} onClick={null}>
+            <div className="ui-card" key={null} onClick={() => props.handleClick(props.article)}>
                 <div className="image">
                     <img alt="nyt-image" src={imageUrl} />
                 </div>
