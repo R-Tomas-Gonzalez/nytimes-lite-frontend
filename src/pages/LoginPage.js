@@ -9,15 +9,10 @@ class LoginPage extends Component{
 
     handleSuccessfulAuth = (data) => {
         this.props.handleLogin(data);
-        this.props.history.push("/");  
+        this.props.history.push("/userpage");  
     }
 
-    // handleLogoutClick = () => {
-    //     axios.delete("http://localhost:3001/logout", {withCredentials: true})
-    //     .then(resp=>this.props.handleLogout())
-    //     .catch(error=>console.log('logout error', error))
-        
-    // }
+    
 
 
     render(){
@@ -32,7 +27,6 @@ class LoginPage extends Component{
                 </header>
 
                 <div className="form-container">
-                    Status: {this.props.loggedInStatus}
                     <LoginComponent handleSuccessfulAuth={this.handleSuccessfulAuth}/>
                     <NavLink to="/registration" className='registration'>Don't have credentials? Sign up</NavLink>
                     <br></br>

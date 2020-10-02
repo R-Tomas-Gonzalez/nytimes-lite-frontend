@@ -61,8 +61,10 @@ class MainPage extends Component{
       
             })
         }
-      
-
+        
+        addToFaves = (article) => {
+          console.log('hey')
+        }
 
     render(){
 return(
@@ -71,11 +73,14 @@ return(
       <div className="nyt-main-header">
         <Header />
       </div>
-      <Arts artArticles={this.state.arts} />
-      <Opinion opinionArticles={this.state.opinion}/>
-      <Sports sportsArticles={this.state.sports}/>
-      <Tech techArticles={this.state.technology}/>
-      <Politics politicalArticles={this.state.us}/> 
+      <div className="section-container-mainpage">
+      <Arts artArticles={this.state.arts} addToFaves={this.addToFaves} />
+      <Opinion opinionArticles={this.state.opinion} addToFaves={this.addToFaves}/>
+      <Sports sportsArticles={this.state.sports} addToFaves={this.addToFaves}/>
+      <Tech techArticles={this.state.technology} addToFaves={this.addToFaves}/>
+      <Politics politicalArticles={this.state.us} addToFaves={this.addToFaves}/> 
+      </div>
+      
     </div>
 )
 }

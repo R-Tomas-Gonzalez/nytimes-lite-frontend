@@ -12,7 +12,7 @@ class Tech extends Component {
                     Tech
                 </h2>
                 <div className='card-row'>
-                    {articles.map((article, index) => (<ArticleCard article={article} key={index} handleClick={this.props.addToFavs}/>))}
+                    {articles.map((article, index) => (<ArticleCard article={article} multimedia={article.multimedia[2].url} key={index} handleClick={this.props.addToFaves}/>))}
                 </div>
             </div>
         );

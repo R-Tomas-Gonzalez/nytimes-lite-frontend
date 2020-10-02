@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Arts from '../containers/ArtsContainer'
 import Opinion from '../containers/OpinionContainer'
 import Sports from '../containers/SportsContainer'
@@ -7,6 +7,7 @@ import Politics from '../containers/PoliticsContainer'
 import Header from '../components/Header.js'
 import UserFavs from '../containers/UserFavs.js'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios';
 
 
 
@@ -32,6 +33,13 @@ class UserPage extends Component{
       
         componentDidMount = () => {
           this.fetchArticles()
+          this.fetchUserArticles()
+        }
+
+        fetchUserArticles = () => {
+          fetch('http://localhost:3001/user_articles')
+            .then(resp=>resp.json())
+            .then(userArticles=> this.setUserArticles(userArticles))
         }
       
         fetchArticles = () => {
@@ -68,41 +76,80 @@ class UserPage extends Component{
             })
         }
       
-        addToFavs = (article) => {
-            this.setState({userArticles: [...this.state.userArticles,article]})
+        addToFaves = (article) => {
+            // this.setState({userArticles: [...this.state.userArticles,article]})
+            // console.log(this.props.user.id, article.abstract, 
+            //   article.byline, article.title, article.url, article.multimedia[2].url)
+          axios.post("http://localhost:3001/user_articles", {
+            url: article.url,
+            abstract: article.abstract,
+            byline: article.byline,
+            title: article.title,
+            multimedia: article.multimedia[2].url,
+            user_id: this.props.user.id
+        },
+        { withCredentials: true }
+        )
+        .then(response => {if (this.props.user.id === response.data.user_id){
+            this.setState({userArticles: [...this.state.userArticles, response.data]})}
+          })
+      }
+        
+        setUserArticles = (userArticles) => {
+          const newArticles = userArticles.filter(userArticle => (userArticle.user_id === this.props.user.id))
+          this.setState({userArticles: newArticles})
         }
+
+        removeFromFavs = (article) => {
+          fetch(`http://localhost:3001/user_articles/${article.id}`, {
+            method: 'DELETE',
+            headers: {
+              Accepts: 'application/json',
+              'Content-type': 'application/json'
+            }
+            })
+            this.setState({ userArticles: this.state.userArticles.filter(userArticle => userArticle !== article)})
+        }
+
+        handleLogoutClick = () => {
+        axios.delete("http://localhost:3001/logout", {withCredentials: true})
+        .then(resp=>this.props.handleLogout())
+        .catch(error=>console.log('logout error', error))
+        
+    }
 
     render(){
 return(
-    
-    <div>
-        
+  
+    <Fragment>
       <div className="nyt-main-header">
-      <header className="header-component">
-                <NavLink to="/" className='home-login' ><span className="login-text"><strong>Sign Out</strong></span></NavLink>
-                <div className="content">
-                <div className="nytimes-text">THE NEW YORK TIMES <span className="lite">lite</span></div>
-                </div>
-                <hr className="header-line"/>
-            </header>
-        </div>
-            <div className="side-bar">
-                <h2>User Favs</h2>
-                <UserFavs articles={this.state.userArticles}/>
+        <header className="header-component">
+          <NavLink to="/" className='home-login' onClick={() => this.handleLogoutClick()}><span className="login-text"><strong>Sign Out</strong></span></NavLink>
+            <div className="content">
+              <div className="nytimes-text">THE NEW YORK TIMES <span className="lite">lite</span></div>
             </div>
-    <Arts artArticles={this.state.arts} addToFavs={this.addToFavs}/>
-    
-    <Opinion opinionArticles={this.state.opinion} addToFavs={this.addToFavs}/>
-    
-    <Sports sportsArticles={this.state.sports} addToFavs={this.addToFavs}/>
-    
-    <Tech techArticles={this.state.technology} addToFavs={this.addToFavs}/>
-   
-    <Politics politicalArticles={this.state.us} addToFavs={this.addToFavs}/>
-    
-    </div>
-)
-}
+          <hr className="header-line"/>
+        </header>
+      </div>
+
+      <div className="all-sections-container">
+        <div className="user-faves-container">
+          <h2 className="user-faves">User Faves</h2>
+          <UserFavs articles={this.state.userArticles} removeFromFavs={this.removeFromFavs}/>
+        </div>
+
+        <div className="sections-container">
+          <Arts artArticles={this.state.arts} addToFaves={this.addToFaves}/>
+          <Opinion opinionArticles={this.state.opinion} addToFaves={this.addToFaves}/>
+          <Sports sportsArticles={this.state.sports} addToFaves={this.addToFaves}/>
+          <Tech techArticles={this.state.technology} addToFaves={this.addToFaves}/>
+          <Politics politicalArticles={this.state.us} addToFaves={this.addToFaves}/>
+        </div>
+      </div>
+
+    </Fragment>
+    )
+  }
 }
 
 export default UserPage
