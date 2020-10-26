@@ -12,9 +12,6 @@ class LoginPage extends Component{
         this.props.history.push("/userpage");  
     }
 
-    
-
-
     render(){
         return(
             <Fragment>

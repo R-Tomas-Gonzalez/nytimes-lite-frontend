@@ -20,6 +20,7 @@ const urls = [
 `https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=${key}`,
 `https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=${key}`,
 ]
+
 class UserPage extends Component{
    state = { 
           arts: [],
@@ -119,37 +120,35 @@ class UserPage extends Component{
     }
 
     render(){
-return(
-  
-    <Fragment>
-      <div className="nyt-main-header">
-        <header className="header-component">
-          <NavLink to="/" className='home-login' onClick={() => this.handleLogoutClick()}><span className="login-text"><strong>Sign Out</strong></span></NavLink>
-            <div className="content">
-              <div className="nytimes-text">THE NEW YORK TIMES <span className="lite">lite</span></div>
+      return(
+        <Fragment>
+          <div className="nyt-main-header">
+            <header className="header-component">
+              <NavLink to="/" className='home-login' onClick={() => this.handleLogoutClick()}><span className="login-text"><strong>Sign Out</strong></span></NavLink>
+                <div className="content">
+                  <div className="nytimes-text">The New York Times <span className="lite">lite</span></div>
+                </div>
+              <hr className="header-line"/>
+            </header>
+          </div>
+
+          <div className="all-sections-container">
+            <div className="user-faves-container">
+              <h2 className="user-faves">User Faves</h2>
+              <UserFavs articles={this.state.userArticles} removeFromFavs={this.removeFromFavs}/>
             </div>
-          <hr className="header-line"/>
-        </header>
-      </div>
 
-      <div className="all-sections-container">
-        <div className="user-faves-container">
-          <h2 className="user-faves">User Faves</h2>
-          <UserFavs articles={this.state.userArticles} removeFromFavs={this.removeFromFavs}/>
-        </div>
-
-        <div className="sections-container">
-          <Arts artArticles={this.state.arts} addToFaves={this.addToFaves}/>
-          <Opinion opinionArticles={this.state.opinion} addToFaves={this.addToFaves}/>
-          <Sports sportsArticles={this.state.sports} addToFaves={this.addToFaves}/>
-          <Tech techArticles={this.state.technology} addToFaves={this.addToFaves}/>
-          <Politics politicalArticles={this.state.us} addToFaves={this.addToFaves}/>
-        </div>
-      </div>
-
-    </Fragment>
-    )
-  }
+            <div className="sections-container">
+              <Arts artArticles={this.state.arts} addToFaves={this.addToFaves}/>
+              <Opinion opinionArticles={this.state.opinion} addToFaves={this.addToFaves}/>
+              <Sports sportsArticles={this.state.sports} addToFaves={this.addToFaves}/>
+              <Tech techArticles={this.state.technology} addToFaves={this.addToFaves}/>
+              <Politics politicalArticles={this.state.us} addToFaves={this.addToFaves}/>
+            </div>
+          </div>
+        </Fragment>
+      )
+    }
 }
 
 export default UserPage

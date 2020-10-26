@@ -33,7 +33,7 @@ const ArticleCard = (props) => {
                     <div>
                         {abstract}
                     </div><br></br>
-                    <a className="read-more" href={url}>Read more...</a>
+                    <a className="read-more" onClick={(e)=> e.stopPropagation()} href={url} target="_blank">Read more...</a>
                 </div>
             </div>
         </div>
