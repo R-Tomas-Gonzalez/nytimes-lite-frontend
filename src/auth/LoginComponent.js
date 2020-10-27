@@ -17,7 +17,7 @@ class LoginComponent extends Component {
     }
 
     handleSubmit = (event) => {
-        axios.post("http://localhost:3001/sessions", {
+        axios.post("https://nytimes-lite.herokuapp.com/sessions", {
             user: {
                 email: this.state.email,
                 password: this.state.password

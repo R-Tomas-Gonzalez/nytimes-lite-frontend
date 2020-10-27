@@ -38,7 +38,7 @@ class UserPage extends Component{
         }
 
         fetchUserArticles = () => {
-          fetch('http://localhost:3001/user_articles')
+          fetch('https://nytimes-lite.herokuapp.com/user_articles')
             .then(resp=>resp.json())
             .then(userArticles=> this.setUserArticles(userArticles))
         }
@@ -81,7 +81,7 @@ class UserPage extends Component{
             // this.setState({userArticles: [...this.state.userArticles,article]})
             // console.log(this.props.user.id, article.abstract, 
             //   article.byline, article.title, article.url, article.multimedia[2].url)
-          axios.post("http://localhost:3001/user_articles", {
+          axios.post("https://nytimes-lite.herokuapp.com/user_articles", {
             url: article.url,
             abstract: article.abstract,
             byline: article.byline,
@@ -102,7 +102,7 @@ class UserPage extends Component{
         }
 
         removeFromFavs = (article) => {
-          fetch(`http://localhost:3001/user_articles/${article.id}`, {
+          fetch(`https://nytimes-lite.herokuapp.com/user_articles/${article.id}`, {
             method: 'DELETE',
             headers: {
               Accepts: 'application/json',
@@ -113,7 +113,7 @@ class UserPage extends Component{
         }
 
         handleLogoutClick = () => {
-        axios.delete("http://localhost:3001/logout", {withCredentials: true})
+        axios.delete("https://nytimes-lite.herokuapp.com/logout", {withCredentials: true})
         .then(resp=>this.props.handleLogout())
         .catch(error=>console.log('logout error', error))
         
