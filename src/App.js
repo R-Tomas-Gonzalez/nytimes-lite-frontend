@@ -40,7 +40,7 @@ class App extends Component {
     })
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     this.checkLoginStatus()
   }
 

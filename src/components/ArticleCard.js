@@ -34,6 +34,7 @@ const ArticleCard = (props) => {
                         {abstract}
                     </div><br></br>
                     <a className="read-more" href={url}>Read more...</a>
+                    
                 </div>
             </div>
         </div>

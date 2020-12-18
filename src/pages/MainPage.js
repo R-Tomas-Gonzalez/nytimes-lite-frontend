@@ -47,6 +47,7 @@ class MainPage extends Component{
               const politics_section = 'us';
       
               function grabArticleSection(section, results){
+              
                 const newResults = results.filter(result => result.section === section)
                    return newResults.filter(result => result.multimedia != null)
               }
